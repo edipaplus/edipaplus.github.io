@@ -15,34 +15,33 @@
 <body>
  <div id="conf"></div>
  <div class="full" id="pc">
-  home 
+   <div class="elem full" style="float:left"><p class="elem" style="width: 100%; float: left; padding: 15px; font-weight: 200; font-size: 2em;">cargando...</p></div> 
  </div>
 
 <script> if(localStorage.pc==undefined){localStorage.pc=JSON.stringify([0,0])}
 errorWeb=`<div class="elem full" id="blok" style="text-align: center;"><div class="elem" style="width: 100%; min-height: 15px; height: 130px; float: left;"></div><p class="elem" style="width: 100%; float: left; text-align: center; font-size: 2.5em; font-weight: 800;">Upss</p><p class="elem" style="width: 100%; float: left; text-align: center; font-size: 1.3em; font-weight: 200; padding: 1px 10px;">No se ha podido conectar al servidor </p><img src="https://t1.uc.ltmcdn.com/es/posts/5/4/9/como_compartir_varios_links_en_un_solo_enlace_19945_600.jpg" class="elem" style="width: 20%; margin: 5%;"></div>`
-app='Navegador Web'
+app='edipaplus'
 
- site="1027889659967193088"
  
  url=[];
  if((document.location.href).indexOf('?')>0){
   uri=(document.location.href).split('?')[1];
   url=uri.split('&')
  }
-  if(url[0]!=undefined){api=url[0]}else{api=site}
-
-   sit="aHR0cHM6Ly9qc29uYmxvYi5jb20vYXBpL2pzb25CbG9iLw=="
-   var xhr = new XMLHttpRequest();xhr.open("GET", atob(sit)+(api));
+   site='MTAyNzg4OTY1OTk2NzE5MzA4OA=='
+   bit2="aHR0cHM6Ly9qc29uYmxvYi5jb20vYXBpL2pzb25CbG9iLw=="
+  if(url[0]!=undefined){caso=url[0]}else{caso=site}
+   var xhr = new XMLHttpRequest();xhr.open("GET", atob(bit2)+atob(caso));
    xhr.setRequestHeader("Content-type", "application/json");
    xhr.onreadystatechange = function(){ if(xhr.readyState == 4){ if(xhr.responseText!=''){
      cont=xhr.responseText
-  if(cont==`{"message":"Blob with id ${api} does not exist","_links":{"self":{"href":"/api/jsonBlob/${api}","templated":false}}}`){cont=errorWeb}
+  if(cont==`{"message":"Blob with id ${caso} does not exist","_links":{"self":{"href":"/api/jsonBlob/${caso}","templated":false}}}`){cont=errorWeb}
      pc.innerHTML=cont
-     localStorage.pc= JSON.stringify([api,cont])
+     localStorage.pc= JSON.stringify([caso,cont])
   }else{
   alerta('No internet');
   pc.innerHTML=errorWeb
-  if(JSON.parse(localStorage.pc)[0]==api){confirma('No se pudo conectar quiere ver su copia en caché','pc.innerHTML=JSON.parse(localStorage.pc)[1]','')} }}};
+  if(JSON.parse(localStorage.pc)[0]==caso){confirma('No se pudo conectar quiere ver su copia en caché','pc.innerHTML=JSON.parse(localStorage.pc)[1]','')} }}};
   xhr.send();
   
  
